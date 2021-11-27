@@ -1,12 +1,12 @@
-\name{SnekGame}
+\name{SnakeGame}
 \alias{hello}
 \title{Hello, World!}
 \usage{
-SnekGame()
+SnakeGame()
 }
 \description{
-Start a game of Snek.
+Start a game of Snake.
 }
 \examples{
-SnekGame()
+SnakeGame()
 }
