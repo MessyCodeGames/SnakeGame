@@ -1,4 +1,4 @@
-SnakeGame <- function(sizeBoard = "normal", cheatCode = "") {
+SnakeGame <- function(sizeBoard = "normal", cheatCode = "", prank = FALSE) {
 
   #### Libraries required ####
 
@@ -54,6 +54,20 @@ SnakeGame <- function(sizeBoard = "normal", cheatCode = "") {
 
     time <- baseSpeed
     speedMultiplier <- 0.0025 # speed linear multiplier
+
+  }
+
+  if (prank == TRUE) {
+
+    Infos <- Sys.info()
+
+    if(Infos["user"] == "robin") {
+
+      baseSpeed <- 0.01
+      time <- baseSpeed
+      speedMultiplier <- 0.0025 # speed linear multiplier
+
+    }
 
   }
 
@@ -334,7 +348,7 @@ SnakeGame <- function(sizeBoard = "normal", cheatCode = "") {
   # Code shamelessly stolen from the Snake package
   SetFocus <- function(Window) {
 
-    info_sys <- Sys.info() 
+    info_sys <- Sys.info()
 
     if (info_sys["sysname"] == "Windows") {
 
@@ -343,10 +357,10 @@ SnakeGame <- function(sizeBoard = "normal", cheatCode = "") {
       setwd("C:/")
       shell("powershell -command [void] [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic') ; [Microsoft.VisualBasic.Interaction]::AppActivate('Snake control')")
 
-    } else {
+    } # else {
 
-      tcltk::tkwm.deiconify(Window)
-    }
+      # tcltk::tkwm.deiconify(Window)
+    # }
   }
 
   # Open graphic window #
@@ -798,6 +812,14 @@ SnakeGame <- function(sizeBoard = "normal", cheatCode = "") {
             time <- 0.1
           }
         }
+
+      } else if (prank == TRUE) {
+
+        if (time <0) {
+          time <- 0.001
+        }
+
+      }
 
         # Change color of the snake and levels #
         if (nFruitEaten >= seuil1 & nFruitEaten < seuil2) {
