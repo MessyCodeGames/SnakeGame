@@ -331,10 +331,10 @@ SnakeGame <- function(sizeBoard = "normal", cheatCode = "") {
   coordFruitCheck2 <- c()
 
   # Window for direct userInput #
-  # Code shamelessly stolen from
+  # Code shamelessly stolen from the Snake package
   SetFocus <- function(Window) {
 
-    info_sys <- Sys.info() #https://stackoverflow.com/questions/9622287/how-do-i-bring-an-r-tk-window-to-the-front-after-launching-via-rscript-from-anot
+    info_sys <- Sys.info() 
 
     if (info_sys["sysname"] == "Windows") {
 
@@ -879,7 +879,7 @@ SnakeGame <- function(sizeBoard = "normal", cheatCode = "") {
         }
 
         userScore <- userScore + (10 + ((0.35 * nFruitEaten)) - log(timeBetweenFruits) )
-        message("Holy shit you ate something! + ", round(10 + (0.35 * nFruitEaten) - log(timeBetweenFruits),2)," points!")
+        message("Wow you ate something! + ", round(10 + (0.35 * nFruitEaten) - log(timeBetweenFruits),2)," points!")
 
         flush.console()
 
