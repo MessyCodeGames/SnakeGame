@@ -1,4 +1,4 @@
-SnekGame <- function(sizeBoard = "normal", cheatCode = "") {
+SnakeGame <- function(sizeBoard = "normal", cheatCode = "") {
 
   #### Libraries required ####
 
