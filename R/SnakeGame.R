@@ -359,7 +359,7 @@ SnakeGame <- function(sizeBoard = "normal", cheatCode = "", prank = FALSE) {
 
     } # else {
 
-      # tcltk::tkwm.deiconify(Window)
+    # tcltk::tkwm.deiconify(Window)
     # }
   }
 
@@ -811,9 +811,7 @@ SnakeGame <- function(sizeBoard = "normal", cheatCode = "", prank = FALSE) {
           if (time < 0.1) {
             time <- 0.1
           }
-        }
-
-      } else if (prank == TRUE) {
+        } else if (prank == TRUE) {
 
         if (time <0) {
           time <- 0.001
@@ -821,689 +819,689 @@ SnakeGame <- function(sizeBoard = "normal", cheatCode = "", prank = FALSE) {
 
       }
 
-        # Change color of the snake and levels #
-        if (nFruitEaten >= seuil1 & nFruitEaten < seuil2) {
+      # Change color of the snake and levels #
+      if (nFruitEaten >= seuil1 & nFruitEaten < seuil2) {
 
-          cols[4] <- "#ff48a5"
-          cols[5] <- "#ff0081"
+        cols[4] <- "#ff48a5"
+        cols[5] <- "#ff0081"
 
-          alphaEvol[1] <- 0.40
-          alphaEvol[2] <- 0.40
-          alphaEvol[3] <- 0.40
+        alphaEvol[1] <- 0.40
+        alphaEvol[2] <- 0.40
+        alphaEvol[3] <- 0.40
 
-          level <- "Limp Pink Snake"
-          levelNumber <- 2
+        level <- "Limp Pink Snake"
+        levelNumber <- 2
 
-        } else if (nFruitEaten >= seuil2 & nFruitEaten < seuil3) {
+      } else if (nFruitEaten >= seuil2 & nFruitEaten < seuil3) {
 
-          cols[4] <- "#090088"
-          cols[5] <- "#010048"
+        cols[4] <- "#090088"
+        cols[5] <- "#010048"
 
-          alphaEvol[1] <- 0.5
-          alphaEvol[2] <- 0.5
-          alphaEvol[3] <- 0.5
+        alphaEvol[1] <- 0.5
+        alphaEvol[2] <- 0.5
+        alphaEvol[3] <- 0.5
 
-          level <- "Wet Blue Snake"
-          levelNumber <- 3
+        level <- "Wet Blue Snake"
+        levelNumber <- 3
 
-        } else if (nFruitEaten >= seuil3 & nFruitEaten < seuil4) {
+      } else if (nFruitEaten >= seuil3 & nFruitEaten < seuil4) {
 
-          cols[4] <- "#ac1e1e"
-          cols[5] <- "#820909"
-          cols[6] <- "#352340"
+        cols[4] <- "#ac1e1e"
+        cols[5] <- "#820909"
+        cols[6] <- "#352340"
 
-          alphaEvol[1] <- 0.6
-          alphaEvol[2] <- 0.6
-          alphaEvol[3] <- 0.6
+        alphaEvol[1] <- 0.6
+        alphaEvol[2] <- 0.6
+        alphaEvol[3] <- 0.6
 
-          level <- "Red Hot Snake"
-          levelNumber <- 4
+        level <- "Red Hot Snake"
+        levelNumber <- 4
 
-        } else if (nFruitEaten >= seuil4 & nFruitEaten < seuil5) {
+      } else if (nFruitEaten >= seuil4 & nFruitEaten < seuil5) {
 
-          cols[4] <- "#352340"
-          cols[5] <- "#252339"
-          cols[6] <- "#CC1100"
+        cols[4] <- "#352340"
+        cols[5] <- "#252339"
+        cols[6] <- "#CC1100"
 
-          alphaEvol[1] <- 0.65
-          alphaEvol[2] <- 0.65
-          alphaEvol[3] <- 0.65
+        alphaEvol[1] <- 0.65
+        alphaEvol[2] <- 0.65
+        alphaEvol[3] <- 0.65
 
-          level <- "Deep Purple Snake"
-          levelNumber <- 5
+        level <- "Deep Purple Snake"
+        levelNumber <- 5
 
-        } else if (nFruitEaten >= seuil5 & nFruitEaten < seuil6) {
+      } else if (nFruitEaten >= seuil5 & nFruitEaten < seuil6) {
 
-          cols[4] <- "#ffcf40"
-          cols[5] <- "#560d0d"
+        cols[4] <- "#ffcf40"
+        cols[5] <- "#560d0d"
 
-          alphaEvol[1] <- 0.7
-          alphaEvol[2] <- 0.7
-          alphaEvol[3] <- 0.7
+        alphaEvol[1] <- 0.7
+        alphaEvol[2] <- 0.7
+        alphaEvol[3] <- 0.7
 
-          level <- "Huge Golden Snake"
-          levelNumber <- 6
+        level <- "Huge Golden Snake"
+        levelNumber <- 6
 
-        } else if (nFruitEaten >= seuil6) {
-          cols[3] <- "#ffdc73"
-          cols[2] <- "#ffcf40"
-          cols[1] <- "#ffbf00"
-          cols[4] <- "#000000"
-          cols[5] <- "white"
+      } else if (nFruitEaten >= seuil6) {
+        cols[3] <- "#ffdc73"
+        cols[2] <- "#ffcf40"
+        cols[1] <- "#ffbf00"
+        cols[4] <- "#000000"
+        cols[5] <- "white"
 
-          alphaEvol[1] <- 0.65
-          alphaEvol[2] <- 0.65
-          alphaEvol[3] <- 0.65
+        alphaEvol[1] <- 0.65
+        alphaEvol[2] <- 0.65
+        alphaEvol[3] <- 0.65
 
-          level <- "Legendary Black Mamba"
-          levelNumber <- 7
-
-        }
-
-        userScore <- userScore + (10 + ((0.35 * nFruitEaten)) - log(timeBetweenFruits) )
-        message("Wow you ate something! + ", round(10 + (0.35 * nFruitEaten) - log(timeBetweenFruits),2)," points!")
-
-        flush.console()
-
-        timeBetweenFruits <- 0.01
-
-        while(fruitCoordGo == FALSE) {
-
-          fruity <- sample(1:yTableLength, 1, replace= FALSE)
-          fruitx <- sample(1:xTableLength, 1, replace= FALSE)
-
-          for (a in 1:length(taily)) {
-
-            coordFruitCheck <- abs(fruity[1] - taily[a]) +
-              abs(fruitx[1] - tailx[a]) +
-              (abs(fruity[1] - taily2[a]) +
-                 abs(fruitx[1] - tailx2[a]))
-            coordFruitCheck2 <- c(coordFruitCheck2, coordFruitCheck)
-
-          }
-
-          if ((is.element(0, coordFruitCheck2)*1 == 0) &
-              (abs(fruity[1] - heady[1]) + abs(fruitx[1] - headx[1]) != 0) &
-              (abs(fruity[1] - heady2[1]) + abs(fruitx[1] - headx2[1]) != 0)) {
-
-            fruitCoordGo <- TRUE
-            coordFruitCheck2 <- c()
-
-          } else {
-
-            fruitCoordGo <- FALSE
-            coordFruitCheck2 <- c()
-
-          }
-        }
-
-        plateauMatrix[fruity, fruitx] <- 3
+        level <- "Legendary Black Mamba"
+        levelNumber <- 7
 
       }
 
-      fruitCoordGo <- FALSE
+      userScore <- userScore + (10 + ((0.35 * nFruitEaten)) - log(timeBetweenFruits) )
+      message("Wow you ate something! + ", round(10 + (0.35 * nFruitEaten) - log(timeBetweenFruits),2)," points!")
 
-      # Si ne mange rien, comportement classique #
-      if (hasEaten == FALSE) {
+      flush.console()
 
-        # Avancee premiere case du snake fantome
-        taily2[length(taily)] <- heady2[1]
-        tailx2[length(tailx)] <- headx2[1]
+      timeBetweenFruits <- 0.01
 
-        # Avance du snake fantome #
-        for (k in 1:(length(taily2 )-1)) {
-          taily2[k] <- taily[k+1]
-          tailx2[k] <- tailx[k+1]
+      while(fruitCoordGo == FALSE) {
+
+        fruity <- sample(1:yTableLength, 1, replace= FALSE)
+        fruitx <- sample(1:xTableLength, 1, replace= FALSE)
+
+        for (a in 1:length(taily)) {
+
+          coordFruitCheck <- abs(fruity[1] - taily[a]) +
+            abs(fruitx[1] - tailx[a]) +
+            (abs(fruity[1] - taily2[a]) +
+               abs(fruitx[1] - tailx2[a]))
+          coordFruitCheck2 <- c(coordFruitCheck2, coordFruitCheck)
+
         }
 
-        # Enregistrement du snake fantome dans le vrai snake #
-        for (l in 1:length(taily)) {
+        if ((is.element(0, coordFruitCheck2)*1 == 0) &
+            (abs(fruity[1] - heady[1]) + abs(fruitx[1] - headx[1]) != 0) &
+            (abs(fruity[1] - heady2[1]) + abs(fruitx[1] - headx2[1]) != 0)) {
 
-          taily[l] <- taily2[l]
-          tailx[l] <- tailx2[l]
+          fruitCoordGo <- TRUE
+          coordFruitCheck2 <- c()
+
+        } else {
+
+          fruitCoordGo <- FALSE
+          coordFruitCheck2 <- c()
 
         }
+      }
 
-        plateauMatrix <- CreateEnvironment(theMatrix, heady, headx, taily, tailx, fruity, fruitx)
+      plateauMatrix[fruity, fruitx] <- 3
 
-        # If ate a fruit #
-      } else if (hasEaten == TRUE) {
+    }
 
-        # Nouvelle case a la place d'avancer
-        taily <- c(taily2, heady2[1])
-        tailx <- c(tailx2, headx2[1])
+    fruitCoordGo <- FALSE
 
-        plateauMatrix <- CreateEnvironment(theMatrix, heady, headx, taily, tailx, fruity, fruitx)
+    # Si ne mange rien, comportement classique #
+    if (hasEaten == FALSE) {
+
+      # Avancee premiere case du snake fantome
+      taily2[length(taily)] <- heady2[1]
+      tailx2[length(tailx)] <- headx2[1]
+
+      # Avance du snake fantome #
+      for (k in 1:(length(taily2 )-1)) {
+        taily2[k] <- taily[k+1]
+        tailx2[k] <- tailx[k+1]
+      }
+
+      # Enregistrement du snake fantome dans le vrai snake #
+      for (l in 1:length(taily)) {
+
+        taily[l] <- taily2[l]
+        tailx[l] <- tailx2[l]
 
       }
 
-      hasEaten <- FALSE
+      plateauMatrix <- CreateEnvironment(theMatrix, heady, headx, taily, tailx, fruity, fruitx)
+
+      # If ate a fruit #
+    } else if (hasEaten == TRUE) {
+
+      # Nouvelle case a la place d'avancer
+      taily <- c(taily2, heady2[1])
+      tailx <- c(tailx2, headx2[1])
+
+      plateauMatrix <- CreateEnvironment(theMatrix, heady, headx, taily, tailx, fruity, fruitx)
+
+    }
+
+    hasEaten <- FALSE
+
+    # Data for the table #
+    coordinatesData <- data.frame(coordx= coX,
+                                  coordy = coY,
+                                  state = as.vector(plateauMatrix))
+
+    # Plot the data #
+    # Label stats for plot #
+    statDisplay <- paste0("Fruits eaten: ", nFruitEaten,"     Score: ", round(userScore,0), "     Level ", levelNumber, ": ", level)
+
+    # Plot the data #
+    print(displayPlotStats(coordx, coordy, state, cols, statDisplay))
+
+    timeElapsed <- timeElapsed + time
+    timeBetweenFruits <- timeBetweenFruits + time
+
+    Sys.sleep(time)
+
+    # Si a perdu la partie #
+  } else if (gameOver == TRUE) {
+
+    message("")
+    message("You lost bro!")
+
+    flush.console()
+
+    # Death animation #
+    # Colors ground, tail snake, head snake, fruit #
+    # Different ending if reach level max #
+    if (levelNumber == 7) {
+
+      coloris <- c("#000000","#111111","#222222", "#FFFFFF", "#FFFFFF", "#000000")
+
+      alphaEvol <- c(1, 1, 1, 1, 1, 1)
+
+    } else {
+
+      coloris <- c("#666666","#999999","#CCCCCC", "black", "black", "#000000")
+      alphaEvol <- c(0.3, 0.3, 0.3, 1, 1, 1)
+
+    }
+
+    print(displayPlot(coordx, coordy, state, coloris))
+
+    z <- 1
+
+    # Death animation #
+    while (z < ((length(taily)) + 1 + (yTableLength - heady[1])) ) {
+
+
+      if (z <= length(taily)) {
+        # Start falling #
+        taily[z] <- taily[z] + 1
+        tailx[z] <- tailx[z]
+
+        # Continue falling #
+        for (r in 1:z) {
+
+          if ((z - 1) != 0) {
+
+            taily[r-1] <- taily[r-1] + 1
+            tailx[r-1] <- tailx[r-1]
+
+          }
+
+        }
+
+        if (taily[r] > yTableLength) {
+
+          taily[r] <- yTableLength
+        }
+
+
+        for (o in 1: length(taily)) {
+          if (taily[o] > yTableLength) {
+            taily[o] <- yTableLength
+          }
+
+        }
+
+      } else {
+
+        e <- 0
+
+        while (e <= yTableLength) {
+
+          e <- e + 1
+
+          heady[1] <- heady[1] + 1
+
+          for (r in 1:length(taily)) {
+            taily[r] <- taily[r] + 1
+            tailx[r] <- tailx[r]
+
+          }
+
+          if (heady[1] > yTableLength) {
+            heady[1] <- yTableLength
+          }
+
+          for (o in 1: length(taily)) {
+            if (taily[o] > yTableLength) {
+              taily[o] <- yTableLength
+            }
+          }
+
+          # Create the table #
+          plateauMatrix <- theMatrix
+
+          # State head
+          plateauMatrix[heady, headx] <- 4
+
+          # State tail
+          for (h in 1:length(taily)) {
+
+            plateauMatrix[taily[h], tailx[h]] <- 3
+
+          }
+
+          # Data for the table #
+          coordinatesData <- data.frame(coordx= coX,
+                                        coordy = coY,
+                                        state = as.vector(plateauMatrix))
+
+          print(displayPlot(coordx, coordy, state, coloris))
+
+          Sys.sleep(0.05)
+
+        }
+      }
+
+      # Create the table #
+      plateauMatrix <- theMatrix
+
+      # State head
+      plateauMatrix[heady, headx] <- 4
+
+      # State tail
+      for (h in 1:length(taily)) {
+
+        plateauMatrix[taily[h], tailx[h]] <- 3
+
+      }
 
       # Data for the table #
       coordinatesData <- data.frame(coordx= coX,
                                     coordy = coY,
                                     state = as.vector(plateauMatrix))
 
-      # Plot the data #
-      # Label stats for plot #
-      statDisplay <- paste0("Fruits eaten: ", nFruitEaten,"     Score: ", round(userScore,0), "     Level ", levelNumber, ": ", level)
-
-      # Plot the data #
-      print(displayPlotStats(coordx, coordy, state, cols, statDisplay))
-
-      timeElapsed <- timeElapsed + time
-      timeBetweenFruits <- timeBetweenFruits + time
-
-      Sys.sleep(time)
-
-      # Si a perdu la partie #
-    } else if (gameOver == TRUE) {
-
-      message("")
-      message("You lost bro!")
-
-      flush.console()
-
-      # Death animation #
-      # Colors ground, tail snake, head snake, fruit #
-      # Different ending if reach level max #
-      if (levelNumber == 7) {
-
-        coloris <- c("#000000","#111111","#222222", "#FFFFFF", "#FFFFFF", "#000000")
-
-        alphaEvol <- c(1, 1, 1, 1, 1, 1)
-
-      } else {
-
-        coloris <- c("#666666","#999999","#CCCCCC", "black", "black", "#000000")
-        alphaEvol <- c(0.3, 0.3, 0.3, 1, 1, 1)
-
-      }
-
       print(displayPlot(coordx, coordy, state, coloris))
 
-      z <- 1
-
-      # Death animation #
-      while (z < ((length(taily)) + 1 + (yTableLength - heady[1])) ) {
-
-
-        if (z <= length(taily)) {
-          # Start falling #
-          taily[z] <- taily[z] + 1
-          tailx[z] <- tailx[z]
-
-          # Continue falling #
-          for (r in 1:z) {
-
-            if ((z - 1) != 0) {
-
-              taily[r-1] <- taily[r-1] + 1
-              tailx[r-1] <- tailx[r-1]
-
-            }
-
-          }
-
-          if (taily[r] > yTableLength) {
-
-            taily[r] <- yTableLength
-          }
-
-
-          for (o in 1: length(taily)) {
-            if (taily[o] > yTableLength) {
-              taily[o] <- yTableLength
-            }
-
-          }
-
-        } else {
-
-          e <- 0
-
-          while (e <= yTableLength) {
-
-            e <- e + 1
-
-            heady[1] <- heady[1] + 1
-
-            for (r in 1:length(taily)) {
-              taily[r] <- taily[r] + 1
-              tailx[r] <- tailx[r]
-
-            }
-
-            if (heady[1] > yTableLength) {
-              heady[1] <- yTableLength
-            }
-
-            for (o in 1: length(taily)) {
-              if (taily[o] > yTableLength) {
-                taily[o] <- yTableLength
-              }
-            }
-
-            # Create the table #
-            plateauMatrix <- theMatrix
-
-            # State head
-            plateauMatrix[heady, headx] <- 4
-
-            # State tail
-            for (h in 1:length(taily)) {
-
-              plateauMatrix[taily[h], tailx[h]] <- 3
-
-            }
-
-            # Data for the table #
-            coordinatesData <- data.frame(coordx= coX,
-                                          coordy = coY,
-                                          state = as.vector(plateauMatrix))
-
-            print(displayPlot(coordx, coordy, state, coloris))
-
-            Sys.sleep(0.05)
-
-          }
-        }
-
-        # Create the table #
-        plateauMatrix <- theMatrix
-
-        # State head
-        plateauMatrix[heady, headx] <- 4
-
-        # State tail
-        for (h in 1:length(taily)) {
-
-          plateauMatrix[taily[h], tailx[h]] <- 3
-
-        }
-
-        # Data for the table #
-        coordinatesData <- data.frame(coordx= coX,
-                                      coordy = coY,
-                                      state = as.vector(plateauMatrix))
-
-        print(displayPlot(coordx, coordy, state, coloris))
-
-        z <- z + 1
-
-        Sys.sleep(0.05)
-      }
-
-      # Final score and stat plot #
-      if (sizeBoard == "small") {
-
-        xLabel = c(5.7, 5.7)
-        yLabel = c(6.5, 2.2)
-
-      }
-
-      else if (sizeBoard == "normal") {
-
-        xLabel = c(8, 8)
-        yLabel = c(9.5, 2.7)
-
-      }
-
-      label <- data.frame(
-        x = xLabel,
-        y = yLabel,
-        label = c(paste0("GAME OVER LAD\n\n Your stats:\n\n You ate ", nFruitEaten,
-                         " bloody fruits\n\n Your score is: ",
-                         round(userScore, 0), "\n\n You reached level ", levelNumber,
-                         ", with da ", level, "!\n\n Your max speed was ",
-                         round((1/time),2)," squares per sec\n\n You wasted ", round(timeElapsed/60, 2), " minute(s) on this session"),
-                  paste0("Press 'p' to start a new game\n Press 'l' to exit you noob")))
-
-      print(ggplot() +
-              geom_tile(data = coordinatesData, aes(x = coordx, y = coordy, fill = as.factor(state))) +
-              scale_fill_manual(values = alpha(c(coloris), alphaEvol))  +
-              theme_void() +
-              theme(legend.position = "none",
-                    axis.title.x= element_blank(),
-                    axis.text.x= element_blank(),
-                    axis.ticks.x= element_blank(),
-                    axis.title.y= element_blank(),
-                    axis.text.y= element_blank(),
-                    axis.ticks.y= element_blank()) +
-              geom_label(data = label, aes(label = label, x = x, y = y), color = "#006633",
-                         size = 6, label.size = 2, fill = "#99FF00"))
+      z <- z + 1
 
       Sys.sleep(0.05)
+    }
 
-      statBoard <- TRUE
+    # Final score and stat plot #
+    if (sizeBoard == "small") {
 
-      while(statBoard == TRUE) {
+      xLabel = c(5.7, 5.7)
+      yLabel = c(6.5, 2.2)
 
-        if (!is.na(SnakeEnvir$KeyCode)) {
+    }
 
-          if (SnakeEnvir$KeyCode == "p") {
+    else if (sizeBoard == "normal") {
 
-            mainMenuBool <- TRUE
+      xLabel = c(8, 8)
+      yLabel = c(9.5, 2.7)
 
-            gameOver <- FALSE
+    }
 
-            statBoard <- FALSE
+    label <- data.frame(
+      x = xLabel,
+      y = yLabel,
+      label = c(paste0("GAME OVER LAD\n\n Your stats:\n\n You ate ", nFruitEaten,
+                       " bloody fruits\n\n Your score is: ",
+                       round(userScore, 0), "\n\n You reached level ", levelNumber,
+                       ", with da ", level, "!\n\n Your max speed was ",
+                       round((1/time),2)," squares per sec\n\n You wasted ", round(timeElapsed/60, 2), " minute(s) on this session"),
+                paste0("Press 'p' to start a new game\n Press 'l' to exit you noob")))
 
-            #### Repeat this untill finding a better solution ####
+    print(ggplot() +
+            geom_tile(data = coordinatesData, aes(x = coordx, y = coordy, fill = as.factor(state))) +
+            scale_fill_manual(values = alpha(c(coloris), alphaEvol))  +
+            theme_void() +
+            theme(legend.position = "none",
+                  axis.title.x= element_blank(),
+                  axis.text.x= element_blank(),
+                  axis.ticks.x= element_blank(),
+                  axis.title.y= element_blank(),
+                  axis.text.y= element_blank(),
+                  axis.ticks.y= element_blank()) +
+            geom_label(data = label, aes(label = label, x = x, y = y), color = "#006633",
+                       size = 6, label.size = 2, fill = "#99FF00"))
 
-            # Colors ground, tail snake, head snake, fruit #
-            cols <- c("#028900","#74d600","#adff00", "#089000","#0a5d00",  "#CC1100")
+    Sys.sleep(0.05)
 
-            # Initiate first level alphas #
-            alphaEvol <- c(0.3, 0.3, 0.3, 1, 1, 1)
+    statBoard <- TRUE
 
-            # CLean graph history sometimes #
-            iterations <-  0
+    while(statBoard == TRUE) {
 
-            # Level tresholds #
-            if (sizeBoard == "small") {
+      if (!is.na(SnakeEnvir$KeyCode)) {
 
-              seuil1 <- 15
-              seuil2 <- 30
-              seuil3 <- 40
-              seuil4 <- 50
-              seuil5 <- 60
-              seuil6 <- 70
-
-            } else if (sizeBoard == "normal") {
-
-              seuil1 <- 15
-              seuil2 <- 30
-              seuil3 <- 45
-              seuil4 <- 60
-              seuil5 <- 75
-              seuil6 <- 90
-            }
-
-            if (cheatCode == "thereisnocowlevel") {
-              # PlayTest tresholds #
-              seuil1 <- 2
-              seuil2 <- 4
-              seuil3 <- 6
-              seuil4 <- 8
-              seuil5 <- 10
-              seuil6 <- 12
-            }
-
-            # Board size depending on options #
-            if (sizeBoard == "normal") {
-
-              yTableLength <- 15
-              xTableLength <- 15
-
-            } else if (sizeBoard == "small") {
-
-              yTableLength <- 10
-              xTableLength <- 10
-
-            }
-
-            # Fill the table with 0 #
-            plateauMatrix <- matrix(nrow = yTableLength, ncol = xTableLength)
-            plateauMatrix[] <- 0 # state table
-
-            # Tail
-            if (sizeBoard == "small") {
-
-              taily <- c(5,5)
-              tailx <- c(2,3)
-
-              # Head
-              heady <- c(5)
-              headx <- c(4)
-
-              # Coordonnees pour dataframe plot #
-              coX <- c(rep(1, yTableLength),
-                       rep(2, yTableLength),
-                       rep(3, yTableLength),
-                       rep(4, yTableLength),
-                       rep(5, yTableLength),
-                       rep(6, yTableLength),
-                       rep(7, yTableLength),
-                       rep(8, yTableLength),
-                       rep(9, yTableLength),
-                       rep(10, yTableLength))
+        if (SnakeEnvir$KeyCode == "p") {
 
-              coY <- rep(seq(10, 1, -1), 10)
+          mainMenuBool <- TRUE
 
-              # Create the environement and states of assets #
-              theMatrix <- matrix(c(0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
-                                    0, 1, 1, 1, 1, 0, 1, 1, 0, 0,
-                                    1, 1, 2, 1, 1, 1, 1, 0, 0, 1,
-                                    1, 2, 2, 2, 1, 1, 0, 0, 0, 1,
-                                    1, 1, 2, 2, 1, 0, 0, 0, 1, 2,
-                                    0, 1, 2, 1, 1, 0, 0, 0, 1, 1,
-                                    0, 1, 1, 1, 0, 0, 0, 0, 0, 0,
-                                    0, 1, 0, 0, 0, 0, 1, 0, 0, 1,
-                                    0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-                                    1, 1, 0, 0, 1, 0, 1, 1, 1, 2),
-                                  ncol = 10, nrow = 10)
-
-            } else if (sizeBoard == "normal") {
-
-              taily <- c(7,7)
-              tailx <- c(2,3)
-
-              # Head
-              heady <- c(7)
-              headx <- c(4)
-
-              # Coordonnees pour dataframe plot #
-              coX <- c(rep(1, yTableLength),
-                       rep(2, yTableLength),
-                       rep(3, yTableLength),
-                       rep(4, yTableLength),
-                       rep(5, yTableLength),
-                       rep(6, yTableLength),
-                       rep(7, yTableLength),
-                       rep(8, yTableLength),
-                       rep(9, yTableLength),
-                       rep(10, yTableLength),
-                       rep(11, yTableLength),
-                       rep(12, yTableLength),
-                       rep(13, yTableLength),
-                       rep(14, yTableLength),
-                       rep(15, yTableLength))
-
-              coY <- rep(seq(xTableLength, 1, -1), yTableLength)
-
-              # Create the environement and states of assets #
-              theMatrix <- matrix(c(0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 2,
-                                    0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1,
-                                    1, 1, 2, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0,
-                                    1, 2, 2, 2, 1, 1, 0, 0, 1, 1, 2, 1, 0, 0, 0,
-                                    1, 1, 2, 2, 1, 0, 0, 0, 1, 2, 2, 1, 1, 0, 0,
-                                    0, 1, 2, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
-                                    0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-                                    0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,
-                                    0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1,
-                                    0, 0, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 1, 1,
-                                    0, 1, 1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1,
-                                    1, 1, 1, 1, 2, 2, 1, 0, 1, 0, 0, 0, 0, 0, 0,
-                                    1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0,
-                                    0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0,
-                                    0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0),
-                                  ncol = 15, nrow = 15)
-
-            }
-
-            taily2 <- rep(1, length(taily))
-            tailx2 <- rep(1, length(tailx))
-
-            heady2 <- c()
-            headx2 <- c()
-
-            taily2 <- c(rep(1, length(taily)))
-            tailx2 <- c(rep(1, length(taily)))
-
-            # Generate random first fruit coordinates #
-            firstFruitGo <- FALSE
-
-            while (firstFruitGo == FALSE) {
-
-              fruity <- sample(1:yTableLength , 1, replace = TRUE)
-              fruitx <- sample(1:xTableLength , 1, replace = TRUE)
-
-              if( (fruity[1] == heady[1] & fruitx[1] == headx[1]) &
-                  (fruity[1] == taily[1] & fruitx[1] == tailx[1]) &
-                  (fruity[1] == taily[2] & fruitx[1] == tailx[2]) ) {
-
-                firstFruitGo <- FALSE
-
-              } else {
-
-                firstFruitGo <- TRUE
-
-              }
-            }
-
-            # State fruit #
-            plateauMatrix[fruity, fruitx] <- 3
-
-            # State head
-            plateauMatrix[heady, headx] <- 2
-
-            # State tail
-            for (i in 1:length(taily)) {
-
-              plateauMatrix[taily[i], tailx[i]] <- 1
-
-            }
-
-            # Create first environment
-            plateauMatrix <- CreateEnvironment(theMatrix, heady, headx, taily, tailx, fruity, fruitx)
-
-            # Data for the table #
-            coordinatesData <- data.frame(coordx= coX,
-                                          coordy = coY,
-                                          state = as.vector(plateauMatrix))
-
-            # Comptage des points #
-            nFruitEaten <- 0
-            userScore <- 0
-
-            # set Initial level #
-            level <- "Green Baby Snake"
-            levelNumber <- 1
-
-            # Label stats for plot #
-            statDisplay <- paste0("Fruits eaten: ", nFruitEaten,"     Score: ", round(userScore,0), "     Level ", levelNumber, ": ", level)
-
-            # Plot the data #
-            displayPlotStats <- function(coordx, coordy, state, cols, statDisplay) {
-
-              return(ggplot(coordinatesData, aes(x = coordx, y = coordy, fill = as.factor(state))) +
-                       geom_tile() +
-                       scale_fill_manual(values = alpha(c(cols), alphaEvol))  +
-                       theme_void() +
-                       xlab(statDisplay) +
-                       theme(legend.position = "none",
-                             axis.title.x= element_blank(),
-                             axis.text.x= element_blank(),
-                             axis.ticks.x= element_blank(),
-                             axis.title.y= element_blank(),
-                             axis.text.y= element_blank(),
-                             axis.ticks.y= element_blank()) +
-                       annotate(geom="label", x= sum(seq(1,xTableLength,1))/xTableLength, y= -0.3,
-                                label= statDisplay, color="#006633", fill = "#99FF00", size = 5))
-
-            }
-
-            # Boolean for eating a fruit #
-            hasEaten <- FALSE
-
-            # Game over #
-            gameOver <- FALSE
-            coordTailCheck2 <- c()
-
-            # Fruit coordinate check #
-            fruitCoordGo <- FALSE
-            coordFruitCheck2 <- c()
-
-            # Initialisation du temps passe #
-            timeElapsed <- 0
-            timeBetweenFruits <- 0.01
-
-            # Direction generale du snake par default #
-            direction <- 4
-
-            # Main Menu #
-            # Out of the loop #
-
-            # Indications on how to play #
-            label <- data.frame(
-              x = c(3, 9.5, 9.5, 9.5, 16, 9.5),
-              y = c(4.5, 5.5, 4.5,3.5, 4.5, 1.5),
-              label = c(paste0("Make sure the\n window with the\n feather symbol\n is selected\n to enter keys"),
-                        paste0("Press 'p' to start playing"),
-                        paste0("Press 'n' to pause the game"),
-                        paste0("Press 'l' to leave the game"),
-                        paste0("'z' = up\n's' = down\n'q' = left\n'd' = right\n Or use arrow keys"),
-                        paste0("The longer it is, the harder it gets!\n Will you reach the legendary snake level? I doubt it but good luck!")))
-
-            PlotMainMenu <- function(coordinatesDataMenu, coordxMenu, coordyMenu,stateMenu, colsMenu, label) {
-
-              return(ggplot() +
-                       geom_tile(data = coordinatesDataMenu, aes(x = coordxMenu, y = coordyMenu, fill = as.factor(stateMenu))) +
-                       scale_fill_manual(values = alpha(c(colsMenu), c(1, 1, 0.3, 1, 1, 0.7)))  +
-                       theme_void() +
-                       theme(legend.position = "none",
-                             axis.title.x= element_blank(),
-                             axis.text.x= element_blank(),
-                             axis.ticks.x= element_blank(),
-                             axis.title.y= element_blank(),
-                             axis.text.y= element_blank(),
-                             axis.ticks.y= element_blank()) +
-                       geom_label(data = label, aes(label = label, x = x, y = y), color = "#006633",
-                                  size = 4, label.size = 1.5, fill = "#99FF00"))
-
-            }
-
-            # Head Snake Menu start coordinates #
-            menuHead <- list(9, 4)
-
-            # Menu frames #
-            menuIteration <- 0
-
-            # Initialisation head ghost menu #
-            menuHead_Ghost <- list()
-
-            # Initialisation tail menu #
-            tailyMenu <- c(11, 11, 11, 10, 9)
-            tailxMenu <- c(1, 2, 3, 3, 3)
-
-            # Initialisation ghost tail menu #
-            tailyMenuGhost <- c(1, 1, 1, 1, 1)
-            tailxMenuGhost <- c(1, 1, 1, 1, 1)
-
-            # Boolean main menu #
-            mainMenuBool <- TRUE
-
-            # Pause initialization #
-            Pause <- FALSE
-
-            SnakeEnvir$KeyCode <- NA
-
-          } else if (SnakeEnvir$KeyCode == "l") {
-
-            statBoard <- FALSE
-
-            if(!is.null(dev.list())) dev.off()
-            cat(rep("\n", 50))
-            cat("\014")
-
-            tcltk::tkdestroy(tt)
-
-            break()
+          gameOver <- FALSE
+
+          statBoard <- FALSE
+
+          #### Repeat this untill finding a better solution ####
+
+          # Colors ground, tail snake, head snake, fruit #
+          cols <- c("#028900","#74d600","#adff00", "#089000","#0a5d00",  "#CC1100")
+
+          # Initiate first level alphas #
+          alphaEvol <- c(0.3, 0.3, 0.3, 1, 1, 1)
+
+          # CLean graph history sometimes #
+          iterations <-  0
+
+          # Level tresholds #
+          if (sizeBoard == "small") {
+
+            seuil1 <- 15
+            seuil2 <- 30
+            seuil3 <- 40
+            seuil4 <- 50
+            seuil5 <- 60
+            seuil6 <- 70
+
+          } else if (sizeBoard == "normal") {
+
+            seuil1 <- 15
+            seuil2 <- 30
+            seuil3 <- 45
+            seuil4 <- 60
+            seuil5 <- 75
+            seuil6 <- 90
+          }
+
+          if (cheatCode == "thereisnocowlevel") {
+            # PlayTest tresholds #
+            seuil1 <- 2
+            seuil2 <- 4
+            seuil3 <- 6
+            seuil4 <- 8
+            seuil5 <- 10
+            seuil6 <- 12
+          }
+
+          # Board size depending on options #
+          if (sizeBoard == "normal") {
+
+            yTableLength <- 15
+            xTableLength <- 15
+
+          } else if (sizeBoard == "small") {
+
+            yTableLength <- 10
+            xTableLength <- 10
 
           }
+
+          # Fill the table with 0 #
+          plateauMatrix <- matrix(nrow = yTableLength, ncol = xTableLength)
+          plateauMatrix[] <- 0 # state table
+
+          # Tail
+          if (sizeBoard == "small") {
+
+            taily <- c(5,5)
+            tailx <- c(2,3)
+
+            # Head
+            heady <- c(5)
+            headx <- c(4)
+
+            # Coordonnees pour dataframe plot #
+            coX <- c(rep(1, yTableLength),
+                     rep(2, yTableLength),
+                     rep(3, yTableLength),
+                     rep(4, yTableLength),
+                     rep(5, yTableLength),
+                     rep(6, yTableLength),
+                     rep(7, yTableLength),
+                     rep(8, yTableLength),
+                     rep(9, yTableLength),
+                     rep(10, yTableLength))
+
+            coY <- rep(seq(10, 1, -1), 10)
+
+            # Create the environement and states of assets #
+            theMatrix <- matrix(c(0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
+                                  0, 1, 1, 1, 1, 0, 1, 1, 0, 0,
+                                  1, 1, 2, 1, 1, 1, 1, 0, 0, 1,
+                                  1, 2, 2, 2, 1, 1, 0, 0, 0, 1,
+                                  1, 1, 2, 2, 1, 0, 0, 0, 1, 2,
+                                  0, 1, 2, 1, 1, 0, 0, 0, 1, 1,
+                                  0, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+                                  0, 1, 0, 0, 0, 0, 1, 0, 0, 1,
+                                  0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                                  1, 1, 0, 0, 1, 0, 1, 1, 1, 2),
+                                ncol = 10, nrow = 10)
+
+          } else if (sizeBoard == "normal") {
+
+            taily <- c(7,7)
+            tailx <- c(2,3)
+
+            # Head
+            heady <- c(7)
+            headx <- c(4)
+
+            # Coordonnees pour dataframe plot #
+            coX <- c(rep(1, yTableLength),
+                     rep(2, yTableLength),
+                     rep(3, yTableLength),
+                     rep(4, yTableLength),
+                     rep(5, yTableLength),
+                     rep(6, yTableLength),
+                     rep(7, yTableLength),
+                     rep(8, yTableLength),
+                     rep(9, yTableLength),
+                     rep(10, yTableLength),
+                     rep(11, yTableLength),
+                     rep(12, yTableLength),
+                     rep(13, yTableLength),
+                     rep(14, yTableLength),
+                     rep(15, yTableLength))
+
+            coY <- rep(seq(xTableLength, 1, -1), yTableLength)
+
+            # Create the environement and states of assets #
+            theMatrix <- matrix(c(0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 2,
+                                  0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1,
+                                  1, 1, 2, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0,
+                                  1, 2, 2, 2, 1, 1, 0, 0, 1, 1, 2, 1, 0, 0, 0,
+                                  1, 1, 2, 2, 1, 0, 0, 0, 1, 2, 2, 1, 1, 0, 0,
+                                  0, 1, 2, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+                                  0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+                                  0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,
+                                  0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1,
+                                  0, 0, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 1, 1,
+                                  0, 1, 1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+                                  1, 1, 1, 1, 2, 2, 1, 0, 1, 0, 0, 0, 0, 0, 0,
+                                  1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0,
+                                  0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0,
+                                  0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0),
+                                ncol = 15, nrow = 15)
+
+          }
+
+          taily2 <- rep(1, length(taily))
+          tailx2 <- rep(1, length(tailx))
+
+          heady2 <- c()
+          headx2 <- c()
+
+          taily2 <- c(rep(1, length(taily)))
+          tailx2 <- c(rep(1, length(taily)))
+
+          # Generate random first fruit coordinates #
+          firstFruitGo <- FALSE
+
+          while (firstFruitGo == FALSE) {
+
+            fruity <- sample(1:yTableLength , 1, replace = TRUE)
+            fruitx <- sample(1:xTableLength , 1, replace = TRUE)
+
+            if( (fruity[1] == heady[1] & fruitx[1] == headx[1]) &
+                (fruity[1] == taily[1] & fruitx[1] == tailx[1]) &
+                (fruity[1] == taily[2] & fruitx[1] == tailx[2]) ) {
+
+              firstFruitGo <- FALSE
+
+            } else {
+
+              firstFruitGo <- TRUE
+
+            }
+          }
+
+          # State fruit #
+          plateauMatrix[fruity, fruitx] <- 3
+
+          # State head
+          plateauMatrix[heady, headx] <- 2
+
+          # State tail
+          for (i in 1:length(taily)) {
+
+            plateauMatrix[taily[i], tailx[i]] <- 1
+
+          }
+
+          # Create first environment
+          plateauMatrix <- CreateEnvironment(theMatrix, heady, headx, taily, tailx, fruity, fruitx)
+
+          # Data for the table #
+          coordinatesData <- data.frame(coordx= coX,
+                                        coordy = coY,
+                                        state = as.vector(plateauMatrix))
+
+          # Comptage des points #
+          nFruitEaten <- 0
+          userScore <- 0
+
+          # set Initial level #
+          level <- "Green Baby Snake"
+          levelNumber <- 1
+
+          # Label stats for plot #
+          statDisplay <- paste0("Fruits eaten: ", nFruitEaten,"     Score: ", round(userScore,0), "     Level ", levelNumber, ": ", level)
+
+          # Plot the data #
+          displayPlotStats <- function(coordx, coordy, state, cols, statDisplay) {
+
+            return(ggplot(coordinatesData, aes(x = coordx, y = coordy, fill = as.factor(state))) +
+                     geom_tile() +
+                     scale_fill_manual(values = alpha(c(cols), alphaEvol))  +
+                     theme_void() +
+                     xlab(statDisplay) +
+                     theme(legend.position = "none",
+                           axis.title.x= element_blank(),
+                           axis.text.x= element_blank(),
+                           axis.ticks.x= element_blank(),
+                           axis.title.y= element_blank(),
+                           axis.text.y= element_blank(),
+                           axis.ticks.y= element_blank()) +
+                     annotate(geom="label", x= sum(seq(1,xTableLength,1))/xTableLength, y= -0.3,
+                              label= statDisplay, color="#006633", fill = "#99FF00", size = 5))
+
+          }
+
+          # Boolean for eating a fruit #
+          hasEaten <- FALSE
+
+          # Game over #
+          gameOver <- FALSE
+          coordTailCheck2 <- c()
+
+          # Fruit coordinate check #
+          fruitCoordGo <- FALSE
+          coordFruitCheck2 <- c()
+
+          # Initialisation du temps passe #
+          timeElapsed <- 0
+          timeBetweenFruits <- 0.01
+
+          # Direction generale du snake par default #
+          direction <- 4
+
+          # Main Menu #
+          # Out of the loop #
+
+          # Indications on how to play #
+          label <- data.frame(
+            x = c(3, 9.5, 9.5, 9.5, 16, 9.5),
+            y = c(4.5, 5.5, 4.5,3.5, 4.5, 1.5),
+            label = c(paste0("Make sure the\n window with the\n feather symbol\n is selected\n to enter keys"),
+                      paste0("Press 'p' to start playing"),
+                      paste0("Press 'n' to pause the game"),
+                      paste0("Press 'l' to leave the game"),
+                      paste0("'z' = up\n's' = down\n'q' = left\n'd' = right\n Or use arrow keys"),
+                      paste0("The longer it is, the harder it gets!\n Will you reach the legendary snake level? I doubt it but good luck!")))
+
+          PlotMainMenu <- function(coordinatesDataMenu, coordxMenu, coordyMenu,stateMenu, colsMenu, label) {
+
+            return(ggplot() +
+                     geom_tile(data = coordinatesDataMenu, aes(x = coordxMenu, y = coordyMenu, fill = as.factor(stateMenu))) +
+                     scale_fill_manual(values = alpha(c(colsMenu), c(1, 1, 0.3, 1, 1, 0.7)))  +
+                     theme_void() +
+                     theme(legend.position = "none",
+                           axis.title.x= element_blank(),
+                           axis.text.x= element_blank(),
+                           axis.ticks.x= element_blank(),
+                           axis.title.y= element_blank(),
+                           axis.text.y= element_blank(),
+                           axis.ticks.y= element_blank()) +
+                     geom_label(data = label, aes(label = label, x = x, y = y), color = "#006633",
+                                size = 4, label.size = 1.5, fill = "#99FF00"))
+
+          }
+
+          # Head Snake Menu start coordinates #
+          menuHead <- list(9, 4)
+
+          # Menu frames #
+          menuIteration <- 0
+
+          # Initialisation head ghost menu #
+          menuHead_Ghost <- list()
+
+          # Initialisation tail menu #
+          tailyMenu <- c(11, 11, 11, 10, 9)
+          tailxMenu <- c(1, 2, 3, 3, 3)
+
+          # Initialisation ghost tail menu #
+          tailyMenuGhost <- c(1, 1, 1, 1, 1)
+          tailxMenuGhost <- c(1, 1, 1, 1, 1)
+
+          # Boolean main menu #
+          mainMenuBool <- TRUE
+
+          # Pause initialization #
+          Pause <- FALSE
+
+          SnakeEnvir$KeyCode <- NA
+
+        } else if (SnakeEnvir$KeyCode == "l") {
+
+          statBoard <- FALSE
+
+          if(!is.null(dev.list())) dev.off()
+          cat(rep("\n", 50))
+          cat("\014")
+
+          tcltk::tkdestroy(tt)
+
+          break()
+
         }
       }
     }
+  }
   }
 }
